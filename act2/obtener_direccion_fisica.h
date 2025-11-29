@@ -4,6 +4,6 @@
 #include <stdint.h>
 
 
-unsigned int obtener_direccion_fisica(unsigned int marco, unsigned int offset, unsigned int page_bits)
+unsigned int obtener_direccion_fisica(unsigned int marco, unsigned int offset, unsigned int page_bits);
 
-#endif 
+#endif

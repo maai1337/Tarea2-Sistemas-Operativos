@@ -6,11 +6,6 @@
 
 void simulador(){
     int puntero_reloj = 0;
-
-
-
-
-
 }
 
 int buscar_marco_libre(Marco *memoria_fisica, int n_marcos){
@@ -99,4 +94,15 @@ unsigned int traducir_direccion(unsigned int dv, PageTableEntry *tabla_paginas, 
 
     return df;
 
+}
+
+int calcular_page_bits(int tam_marco){
+    int bits = 0;
+    int tam = tam_marco;
+    while (tam > 1)
+    {
+        tam >>=1;
+        bits++;
+    }
+    return bits;
 }
