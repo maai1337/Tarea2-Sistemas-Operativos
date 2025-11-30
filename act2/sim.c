@@ -190,3 +190,44 @@ unsigned int parsear_direccion(const char *str){
     }
     return dv;
 }
+
+int main(int argc, char *argv[]){
+
+    
+
+    int n_marcos = atoi(argv[1]);
+    int tam_marco = atoi(argv[2]);
+    int verbose = 0;
+    const char *archivo_traza;
+
+
+    if (n_marcos <= 0){
+        fprintf(stderr, "Error. El número de marcos debe ser positivo");
+        return 1;
+    }
+
+    if (tam_marco <= 0 || (tam_marco & (tam_marco - 1) != 0)){
+        fprintf(stderr, "Error. tamaño del marco debe ser una potencia de dos");
+        return 1;
+    }
+    
+    if (argc == 4) {
+        archivo_traza = argv[3];
+    } else if (argc == 5)
+    {
+        if (strncmp(argv[3], "--verbose") == 0)
+        {
+            verbose = 1;
+            archivo_traza = argv[4];
+        }  else {
+                fprintf(stderr, "Error. Argumento desconocido");
+        }
+    } else
+    {
+        fprintf(stderr, "Error. Demasiados argumentos");
+    }
+
+    ejecutar_simulador(archivo_traza, n_marcos, tam_marco, verbose);
+
+
+}
