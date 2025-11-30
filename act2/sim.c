@@ -71,7 +71,7 @@ void simulador(const char *archivo_traza, int n_marcos, int tam_marco, int verbo
     printf("\n===RESULTADOS===");
     printf("Total de accesos: %d \n", total_accesos);
     printf("Fallos de página: %d \n", total_fallos);
-    printf("Tasa de fallos: %.2f%%\n", (double)total_fallos / total_fallos * 100);
+    printf("Tasa de fallos: %.2f%%\n", (double)total_fallos / total_accesos * 100);
     printf("=================\n");
 
     fclose(fp);
@@ -117,7 +117,7 @@ unsigned int traducir_direccion(unsigned int dv, PageTableEntry *tabla_paginas, 
     int marco;
 
     // hit
-    if(tabla_paginas[nvp].valid = 1){
+    if(tabla_paginas[nvp].valid == 1){
         marco = tabla_paginas[nvp].marco_fisico;
         memoria_fisica[marco].bit_referencia = 1;
         tabla_paginas[nvp].referencia = 1;
@@ -159,7 +159,7 @@ unsigned int traducir_direccion(unsigned int dv, PageTableEntry *tabla_paginas, 
         memoria_fisica[marco].bit_referencia = 1;
 
         tabla_paginas[nvp].marco_fisico = marco;
-        tabla_paginas[nvp].valid = -1;
+        tabla_paginas[nvp].valid = 1;
         tabla_paginas[nvp].referencia = 1;
     } 
 
